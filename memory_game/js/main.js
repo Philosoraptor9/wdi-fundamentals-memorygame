@@ -14,6 +14,7 @@ var flipCard = function() {
   console.log("User flipped " + cards[cardId].cardImage);
   cardsInPlay.push(cards[cardId].cardImage);
   this.setAttribute("src", cards[cardId].front);
+  checkForMatch(cardsInPlay);
 }
 
 var createBoard = function() {
@@ -27,16 +28,14 @@ var createBoard = function() {
 }
 }
 
-var checkForMatch = function (cardsInPlay) {
- if (cardsInPlay.length === 2 && cardsInPlay[0].cardImage === cardsInPlay[1].cardImage) {
+var checkForMatch = function(cardsInPlay) {
+ if (cardsInPlay.length === 2 && cardsInPlay[0] === cardsInPlay[1]) {
  	alert("You found a match!");
-} else {
+} else if (cardsInPlay.length === 2 && cardsInPlay[0] !== cardsInPlay[1]) {
 	alert("Sorry, try again.");
  }
 }
-//I could not figure out how to get the checkForMatch function to display the alert without refreshing the page... no errors. wtf
 
 createBoard();
-checkForMatch(cardsInPlay);
 
 
